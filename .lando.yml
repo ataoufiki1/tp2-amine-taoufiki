@@ -1,0 +1,69 @@
+name: c
+recipe: symfony
+
+excludes:
+  - vendor
+  - var
+
+proxy:
+  appserver:
+    - c.lndo.site
+  pma:
+    - phpmyadminfbaplandev.lndo.site
+#  mailhog:
+#    - mailhog.lndo.site
+
+config:
+  php: "8.2"
+  via: apache:2.4
+  webroot: public
+  # cache: redis
+  # xdebug: true
+  config:
+    # php: .vscode/php.ini
+
+# keys: false
+
+services:
+  appserver:
+    ports:
+      - "8080:80"
+
+    ssl:
+      - true
+
+    build:
+      - composer install
+      # Commandes permmettant d'installer symfony CLI globalement dans le conteneur
+      - "curl -sS https://get.symfony.com/cli/installer | bash"
+      - "mv /var/www/.symfony5/bin/symfony /usr/local/bin/symfony"
+
+    build_as_root:
+      - apt-get update -y
+      - apt install libxslt1-dev -y
+      - docker-php-ext-install xsl
+
+    scanner: false
+  #web:
+  #  ssl:
+  #    - true
+
+  database:
+    type: mysql:5.7
+    # type: mysql:8.0
+    # config:
+    #   database: config/mysql8.cnf
+    portforward: 3307
+    creds:
+      user: c
+      password: c
+      database: c
+
+  pma:
+    type: phpmyadmin
+    scanner: false
+#  mailhog:
+#    type: mailhog
+#    portforward: 1025
+#    hogfrom:
+#      - appserver
