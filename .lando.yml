@@ -53,7 +53,7 @@ services:
     # type: mysql:8.0
     # config:
     #   database: config/mysql8.cnf
-    portforward: 3307
+    portforward: 3306
     creds:
       user: c
       password: c
