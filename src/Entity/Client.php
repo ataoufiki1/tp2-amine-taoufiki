@@ -3,22 +3,27 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 class Client extends Personne
 {
-  
-
     #[ORM\Column(nullable: true)]
     private ?int $N_Client = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $historique_achat = null;
 
-    public function getId(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity=Achat::class, mappedBy="client")
+     */
+    private ArrayCollection $achats;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->achats = new ArrayCollection();
     }
 
     public function getNClient(): ?int
@@ -44,10 +49,9 @@ class Client extends Personne
 
         return $this;
     }
-    #[ORM\OneToMany(targetEntity: Achat::class, mappedBy: 'client')]
-    private Collection $achats;
 
-    public function __construct() {
-        $this->achats = new ArrayCollection();
+    public function getAchats(): ArrayCollection
+    {
+        return $this->achats;
     }
 }

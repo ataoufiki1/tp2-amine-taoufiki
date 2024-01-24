@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Salarie</title>
+
+{% block body %}
+    <h1>Edit Salarie</h1>
+
+    {{ include('salarie/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_salarie_index') }}">back to list</a>
+
+    {{ include('salarie/_delete_form.html.twig') }}
+{% endblock %}

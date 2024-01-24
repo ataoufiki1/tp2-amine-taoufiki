@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<title>Salarie index</title>
+
+{% block body %}
+    <h1>Salarie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Matricule</th>
+                <th>Département</th>
+                <th>Poste</th>
+                <th>Salaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salarie in salaries %}
+            <tr>
+                <td>{{ salarie.id }}</td>
+                <td>{{ salarie.nom }}</td>
+                <td>{{ salarie.prenom }}</td>
+                <td>{{ salarie.telephone }}</td>
+                <td>{{ salarie.matricule }}</td>
+                <td>{{ salarie.département }}</td>
+                <td>{{ salarie.poste }}</td>
+                <td>{{ salarie.salaire }}</td>
+                <td>
+                    <a href="{{ path('app_salarie_show', {'id': salarie.id}) }}">show</a>
+                    <a href="{{ path('app_salarie_edit', {'id': salarie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_salarie_new') }}">Create new</a>
+{% endblock %}

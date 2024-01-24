@@ -5,12 +5,14 @@ namespace App\Entity;
 use App\Repository\PersonneRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
 class Personne
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name: "personne_id", type: "integer")]
+    #[ORM\Column(name: "id", type: "integer")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -19,10 +21,7 @@ class Personne
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $yes = null;
 
-    #[ORM\Column(length: 255)]
     private ?string $adresse = null;
 
     #[ORM\Column(type: "integer")]
@@ -57,17 +56,7 @@ class Personne
         return $this;
     }
 
-    public function getYes(): ?string
-    {
-        return $this->yes;
-    }
-
-    public function setYes(string $yes): static
-    {
-        $this->yes = $yes;
-
-        return $this;
-    }
+    
 
     public function getAdresse(): ?string
     {
