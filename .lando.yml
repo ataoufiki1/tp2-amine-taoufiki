@@ -9,7 +9,7 @@ proxy:
   appserver:
     - c.lndo.site
   pma:
-    - phpmyadminfbaplandev.lndo.site
+    - base.lndo.site
 #  mailhog:
 #    - mailhog.lndo.site
 
