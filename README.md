@@ -31,3 +31,5 @@ http://localhost:8080
 
 > lando
 > docker
+
+## les diagrammes UML j'ai les inclus dans le fichier Word qui s'appelle uml.docx
