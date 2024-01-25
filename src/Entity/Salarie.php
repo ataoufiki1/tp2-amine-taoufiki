@@ -8,13 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: SalarieRepository::class)]
 class Salarie extends Personne
 {
-    
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $matricule = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $département = null;
+    private ?int $departement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $poste = null;
@@ -39,14 +37,14 @@ class Salarie extends Personne
         return $this;
     }
 
-    public function getDépartement(): ?int
+    public function getDepartement(): ?int
     {
-        return $this->département;
+        return $this->departement;
     }
 
-    public function setDépartement(?int $département): static
+    public function setDepartement(?int $departement): static
     {
-        $this->département = $département;
+        $this->departement = $departement;
 
         return $this;
     }
@@ -75,3 +73,22 @@ class Salarie extends Personne
         return $this;
     }
 }
+
+
+function createSalarieInstance()
+{
+    // Création d'une instance de Salarie
+    $salarie = new Salarie();
+
+    // Attribution d'une valeur à la propriété departement
+    $salarie->setDepartement(123); // Remplacez 123 par la valeur souhaitée
+
+    // Accès à la propriété departement
+    $departement = $salarie->getDepartement();
+
+    // Utilisation de la valeur de departement
+    echo "Département : " . $departement;
+}
+
+// Call the function or method to create the Salarie instance
+createSalarieInstance();

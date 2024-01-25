@@ -43,7 +43,7 @@
         "symfony/yaml": "6.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "symfony/doctrine-bundle": "^6.4"
+        "doctrine/annotations": "^1.0"
     },
     "config": {
         "allow-plugins": {
@@ -86,7 +86,7 @@
         ]
     },
     "conflict": {
-        "symfony/symfony": "*"
+        "symfony/symfony": "6.4.*"
     },
     "extra": {
         "symfony": {

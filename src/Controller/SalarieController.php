@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Salarie;
 use App\Form\SalarieType;
 use App\Repository\SalarieRepository;

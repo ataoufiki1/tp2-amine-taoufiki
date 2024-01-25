@@ -69,4 +69,5 @@ class Entreprise
         }
         return self::$instance;
     }
+    
 }
