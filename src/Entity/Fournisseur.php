@@ -11,7 +11,7 @@ class Fournisseur extends Personne
   
 
     #[ORM\Column(nullable: true)]
-    private ?int $fournisseurN_fournisseur = null;
+    private ?int $fournisseur_fournisseur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $produits_fourn = null;
